@@ -1,0 +1,20 @@
+section {
+  display: flex;
+  justify-content: center;
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    .category-item {
+      margin: 5px;
+      padding: 3px 15px;
+      border-radius: 15px;
+      cursor: pointer;
+      p {
+        white-space: normal;
+      }
+    }
+    .section {
+      background-color: #fee0b9;
+    }
+  }
+}
