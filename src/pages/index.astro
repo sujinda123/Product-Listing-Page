@@ -11,5 +11,5 @@ const products = await response.json();
 <Layout title="Product Listing Page">
   <Navbar client:load />
   <Category products={products} client:load />
-  <ProductList products={products} client:load />
+  <ProductList client:load />
 </Layout>

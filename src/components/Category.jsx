@@ -1,9 +1,11 @@
 import './Category.scss';
 
 import { useStore } from '@nanostores/react';
-import { selectedCategories } from '../cartStore.ts';
+import { selectedCategories, isLoading } from '../cartStore.ts';
+import Skeleton from 'react-loading-skeleton';
 
 export default function Category({ products }) {
+  const $isLoading = useStore(isLoading);
   const selectedCategoriesState = useStore(selectedCategories);
 
   const categories = [...new Set(products.map(product => product.category))];
@@ -19,7 +21,7 @@ export default function Category({ products }) {
   return (
     <section>
       <div className="container">
-        {categories.map(category => (
+        {!$isLoading && categories.length !== 0 ? categories.map(category => (
           <div
             key={category}
             onClick={() => toggleCategory(category)}
@@ -31,7 +33,7 @@ export default function Category({ products }) {
           >
             <p>{category}</p>
           </div>
-        ))}
+        )) :  [...Array(4)].map((_, i) => <Skeleton key={i} height={20} width={100} style={{color: "#e3e4e6", marginRight: 10}} />) }
       </div>
     </section>
   );

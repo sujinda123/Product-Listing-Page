@@ -2,6 +2,8 @@ import { atom, map } from 'nanostores';
 
 export const selectedCategories = atom([])
 
+export const isLoading = atom(true)
+
 export const isCartOpen = atom(false);
 
 export const totalQuantity = atom(0);
