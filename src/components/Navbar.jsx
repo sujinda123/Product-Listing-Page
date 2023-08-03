@@ -6,7 +6,7 @@ import {
   cartItems,
   deleteCartItem,
   increaseCartItem,
-  decreaseCartItem
+  decreaseCartItem,
 } from '../cartStore.ts';
 import './Navbar.scss';
 import { useEffect, useRef } from 'react';
@@ -46,43 +46,43 @@ const Navbar = ({}) => {
             <p ref={cartButtonRef} onClick={() => isCartOpen.set(!$isCartOpen)}>
               Cart({$totalQuantity})
             </p>
-            {/* Popup Cart */}
-            <div
-              ref={cartPopupRef}
-              hidden={!$isCartOpen}
-              className="cart-popup"
-            >
-              {Object.values($cartItems).length ? (
-                <>
-                  {Object.values($cartItems).map(cartItem => (
-                    <div key={cartItem.id} className="popup-item">
-                      <img src={cartItem.imageSrc} alt={cartItem.name} />
-                      <div className="detail-item">
-                        <p>{cartItem.name}</p>
-                        <div className="btn-group">
-                          <button onClick={()=>decreaseCartItem(cartItem.id)}>-</button>
-                          <p>{cartItem.quantity}</p>
-                          <button onClick={()=>increaseCartItem(cartItem.id)}>+</button>
-                        </div>
-                      </div>
-                      <div className="option-item">
-                        <button onClick={() => deleteCartItem(cartItem.id)}>
-                          Delete
+          </div>
+          {/* Popup Cart */}
+          <div ref={cartPopupRef} hidden={!$isCartOpen} className="cart-popup">
+            {Object.values($cartItems).length ? (
+              <>
+                {Object.values($cartItems).map(cartItem => (
+                  <div key={cartItem.id} className="popup-item">
+                    <img src={cartItem.imageSrc} alt={cartItem.name} />
+                    <div className="detail-item">
+                      <p>{cartItem.name}</p>
+                      <div className="btn-group">
+                        <button onClick={() => decreaseCartItem(cartItem.id)}>
+                          -
                         </button>
-                        <p>${parseFloat(cartItem.price).toFixed(2)}</p>
+                        <p>{cartItem.quantity}</p>
+                        <button onClick={() => increaseCartItem(cartItem.id)}>
+                          +
+                        </button>
                       </div>
                     </div>
-                  ))}
-                  <hr />
-                  <div className="total">
-                    <p>Total</p>
-                    <p>${$totalPrice.toFixed(2)}</p>
+                    <div className="option-item">
+                      <button onClick={() => deleteCartItem(cartItem.id)}>
+                        Delete
+                      </button>
+                      <p>${parseFloat(cartItem.price).toFixed(2)}</p>
+                    </div>
                   </div>
-                </>
-              ) : (
-                <p>Your cart is empty!</p>
-              )}
-            </div>
+                ))}
+                <hr />
+                <div className="total">
+                  <p>Total</p>
+                  <p>${$totalPrice.toFixed(2)}</p>
+                </div>
+              </>
+            ) : (
+              <p>Your cart is empty!</p>
+            )}
           </div>
         </div>
       </nav>

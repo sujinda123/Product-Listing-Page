@@ -7,7 +7,7 @@ nav {
   .container {
     align-items: center;
     justify-content: space-between;
-
+    position: relative;
     .logo {
       p {
         font-size: 20px;
@@ -26,10 +26,12 @@ nav {
       cursor: pointer;
     }
     .cart-popup {
-      position: fixed;
+      position: absolute;
       background-color: rgb(255, 255, 255);
-      margin-top: 5px;
-      margin-left: -270px;
+      margin-top: 55px;
+      // margin-left: 20px;
+      top: 0;
+      right: 20px;
       padding: 10px;
       max-width: 330px;
       width: 100%;
@@ -58,7 +60,8 @@ nav {
           .btn-group {
             display: flex;
             align-items: center;
-
+            max-width: 100px;
+            width: 100%;
             p {
               margin: 5px;
             }
