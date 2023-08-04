@@ -1,4 +1,7 @@
 # Product Listing Page
+
+[![Open in Vercel](https://product-listing-page-sepia.vercel.app/)
+
 <!-- 
 ```
 npm create astro@latest -- --template basics
